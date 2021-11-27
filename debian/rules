@@ -1,0 +1,53 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/architecture.mk
+
+export QT_SELECT := qt5
+export LIBRARY_PATH := $(LIBRARY_PATH):/opt/libhybris/lib/$(DEB_HOST_MULTIARCH)
+export C_INCLUDE_PATH := $(C_INCLUDE_PATH):/opt/libhybris/include/
+export CPLUS_INCLUDE_PATH := $(CPLUS_INCLUDE_PATH):/opt/libhybris/include/
+
+%:
+	dh $@ --with pkgkde_symbolshelper
+
+override_dh_auto_configure:
+ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
+	cd src/qtwaylandscanner && \
+		g++ qtwaylandscanner.cpp -I/usr/include/$(DEB_BUILD_MULTIARCH)/qt5 \
+		-I/usr/include/$(DEB_BUILD_MULTIARCH)/qt5/QtCore \
+		-fPIC -lQt5Core -o $(CURDIR)/qtwaylandscanner_native
+	dh_auto_configure -- QMAKE_QMAKE=/usr/bin/$(DEB_HOST_GNU_TYPE)-qmake \
+		QT_TOOL.qtwaylandscanner.binary=$(CURDIR)/qtwaylandscanner_native \
+		PKG_CONFIG_LIBDIR=/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig:/usr/share/pkgconfig \
+		CONFIG+=git_build
+else
+	dh_auto_configure -- QT_BUILD_PARTS+=tests CONFIG+=git_build
+
+endif
+
+override_dh_auto_build-indep: build-arch
+	dh_auto_build -- docs
+
+override_dh_auto_install-indep:
+	dh_auto_build -- INSTALL_ROOT=$(CURDIR)/debian/tmp install_docs
+
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_link:
+	dh_link -pqtwayland5-dev-tools \
+		usr/lib/qt5/bin/qtwaylandscanner usr/lib/$(DEB_HOST_MULTIARCH)/qt5/bin/qtwaylandscanner
+	dh_link --remaining-packages
+
+override_dh_auto_test-arch:
+ifneq (,$(filter $(DEB_HOST_ARCH),mips mipsel))
+	# mips/mipsel: double free or corruption, unreproducible on porterboxes
+	-dh_auto_test -- -Ctests/auto TESTRUNNER="xvfb-run -a"
+else
+	dh_auto_test -- -Ctests/auto TESTRUNNER="xvfb-run -a"
+endif
+
+override_dh_auto_test-indep:

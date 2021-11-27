@@ -1,0 +1,5 @@
+usr/lib/*/qt5/plugins/platforms/*.so
+usr/lib/*/qt5/plugins/wayland-decoration-client/libbradient.so
+usr/lib/*/qt5/plugins/wayland-graphics-integration-client/*.so
+usr/lib/*/qt5/plugins/wayland-graphics-integration-server/*.so
+usr/lib/*/qt5/plugins/wayland-shell-integration/*.so

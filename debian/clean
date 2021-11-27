@@ -1,0 +1,17 @@
+config.opt
+config.summary
+config.tests/.qmake.cache
+config.tests/.qmake.stash
+doc/
+src/client/QtWaylandClient.version.in
+src/client/qtwaylandclient-config.h
+src/client/qtwaylandclient-config.pri
+src/client/qtwaylandclient-config_p.h
+src/compositor/QtWaylandCompositor.version.in
+src/compositor/codeattributions.qdoc
+src/compositor/qtwaylandcompositor-config.h
+src/compositor/qtwaylandcompositor-config.pri
+src/compositor/qtwaylandcompositor-config_p.h
+src/imports/compositor/compositor.qrc
+qml/
+qtwaylandscanner_native

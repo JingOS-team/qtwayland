@@ -1,0 +1,17 @@
+usr/include/*/qt5/QtWaylandClient/QWaylandClientExtension
+usr/include/*/qt5/QtWaylandClient/QWaylandClientExtensionTemplate
+usr/include/*/qt5/QtWaylandClient/QtWaylandClient
+usr/include/*/qt5/QtWaylandClient/QtWaylandClientDepends
+usr/include/*/qt5/QtWaylandClient/QtWaylandClientVersion
+usr/include/*/qt5/QtWaylandClient/qtwaylandclient-config.h
+usr/include/*/qt5/QtWaylandClient/qtwaylandclientglobal.h
+usr/include/*/qt5/QtWaylandClient/qtwaylandclientversion.h
+usr/include/*/qt5/QtWaylandClient/qwaylandclientexport.h
+usr/include/*/qt5/QtWaylandClient/qwaylandclientextension.h
+usr/lib/*/cmake/Qt5WaylandClient/Qt5WaylandClientConfig.cmake
+usr/lib/*/cmake/Qt5WaylandClient/Qt5WaylandClientConfigVersion.cmake
+usr/lib/*/cmake/Qt5WaylandClient/Qt5WaylandClient_*Plugin.cmake
+usr/lib/*/libQt5WaylandClient.prl
+usr/lib/*/libQt5WaylandClient.so
+usr/lib/*/pkgconfig/Qt5WaylandClient.pc
+usr/lib/*/qt5/mkspecs/modules/qt_lib_waylandclient.pri

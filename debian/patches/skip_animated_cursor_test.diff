@@ -1,0 +1,16 @@
+Description: skip tst_seatv4::animatedCursor that fails in Debian
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: not-needed
+Bug: https://bugreports.qt.io/browse/QTBUG-78317
+Last-Update: 2020-04-30
+
+--- a/tests/auto/client/seatv4/tst_seatv4.cpp
++++ b/tests/auto/client/seatv4/tst_seatv4.cpp
+@@ -570,6 +570,7 @@ void tst_seatv4::hidpiBitmapCursorNonInt
+ 
+ void tst_seatv4::animatedCursor()
+ {
++    QSKIP("See https://bugreports.qt.io/browse/QTBUG-78317");
+     QRasterWindow window;
+     window.resize(64, 64);
+     window.setCursor(Qt::WaitCursor); // TODO: verify that the theme has an animated wait cursor or skip test

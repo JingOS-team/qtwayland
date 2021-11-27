@@ -1,0 +1,4 @@
+usr/lib/*/libQt5WaylandClient.la
+usr/lib/*/libQt5WaylandCompositor.la
+usr/lib/*/qt5/mkspecs/modules/qt_lib_waylandclient_private.pri
+usr/lib/*/qt5/mkspecs/modules/qt_lib_waylandcompositor_private.pri
